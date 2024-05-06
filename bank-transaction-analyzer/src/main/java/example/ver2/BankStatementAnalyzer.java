@@ -1,5 +1,9 @@
 package example.ver2;
 
+import example.ver2.transaction.BankTotalTransactionSummarizer;
+import example.ver2.transaction.BankTransaction;
+import example.ver2.transaction.BankTransactionProcessor;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -16,16 +20,16 @@ public class BankStatementAnalyzer {
         final List<String> lines = Files.readAllLines(path);
         final List<BankTransaction> bankTransactions = bankStatementParser.parseLinesFrom(lines);
 
-        final BankStatementProcessor bankStatementProcessor = new BankStatementProcessor(bankTransactions);
-        collectSummary(bankStatementProcessor);
+        final BankTransactionProcessor bankTransactionProcessor = new BankTransactionProcessor(bankTransactions);
+        collectSummary(bankTransactionProcessor);
     }
 
-    private static void collectSummary(final BankStatementProcessor bankStatementProcessor) {
+    private static void collectSummary(final BankTransactionProcessor bankTransactionProcessor) {
         System.out.println("The total for all transactions is "
-                + bankStatementProcessor.calculateTotalAmount());
+                + bankTransactionProcessor.summarizeTransactions(new BankTotalTransactionSummarizer()));
         System.out.println("The total for transactions in January is "
-                + bankStatementProcessor.calculateTotalInMonth(Month.JANUARY));
+                + bankTransactionProcessor.calculateTotalInMonth(Month.JANUARY));
         System.out.println("The total for transactions in February is "
-                + bankStatementProcessor.calculateTotalInMonth(Month.FEBRUARY));
+                + bankTransactionProcessor.calculateTotalInMonth(Month.FEBRUARY));
     }
 }

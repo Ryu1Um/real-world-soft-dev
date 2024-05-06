@@ -1,4 +1,4 @@
-package example.ver2;
+package example.ver2.transaction;
 
 import java.time.LocalDate;
 import java.util.Objects;

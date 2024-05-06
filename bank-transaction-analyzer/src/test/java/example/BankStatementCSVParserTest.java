@@ -2,7 +2,7 @@ package example;
 
 import example.ver2.BankStatementCSVParser;
 import example.ver2.BankStatementParser;
-import example.ver2.BankTransaction;
+import example.ver2.transaction.BankTransaction;
 import org.junit.Assert;
 import org.junit.Test;
 
