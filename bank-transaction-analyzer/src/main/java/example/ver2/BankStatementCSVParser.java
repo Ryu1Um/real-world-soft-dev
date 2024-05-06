@@ -1,5 +1,7 @@
 package example.ver2;
 
+import example.ver2.transaction.BankTransaction;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
